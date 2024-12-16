@@ -16,8 +16,8 @@ class Gift extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function user()
+    public function child()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Child::class);
     }
 }
