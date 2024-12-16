@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gift_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('gift_id')->constrained('gifts');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('child_id')->constrained('children');
         });
     }
 

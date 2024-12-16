@@ -29,10 +29,6 @@ class User extends Authenticatable
         return $this->hasMany(Child::class);
     }
 
-    public function gift()
-    {
-        return $this->belongsToMany(Gift::class);
-    }
 
     /**
      * The attributes that should be hidden for serialization.
