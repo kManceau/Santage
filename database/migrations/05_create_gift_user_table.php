@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gifts', function (Blueprint $table) {
+        Schema::create('gift_user', function (Blueprint $table) {
             $table->id();
-            $table->boolean('good');
-            $table->string('name');
-            $table->text('description');
-            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('gift_id')->constrained('gifts');
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('gift_user');
     }
 };

@@ -24,9 +24,14 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function child() 
+    public function child()
     {
-        return $this->hasMany(Child::class); 
+        return $this->hasMany(Child::class);
+    }
+
+    public function gift()
+    {
+        return $this->belongsToMany(Gift::class);
     }
 
     /**

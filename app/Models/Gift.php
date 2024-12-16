@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Gift extends Model
 {
     use HasFactory;
-    public $timestamps = false; 
+    public $timestamps = false;
     protected $fillable = ['good','name','description'];
 
-    public function category() 
+    public function category()
     {
-        return $this->belongsTo(Category::class); 
+        return $this->belongsTo(Category::class);
     }
-    
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
