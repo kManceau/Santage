@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gift_child', function (Blueprint $table) {
+        Schema::create('child_gift', function (Blueprint $table) {
             $table->id();
             $table->foreignId('gift_id')->constrained('gifts');
             $table->foreignId('child_id')->constrained('children');
