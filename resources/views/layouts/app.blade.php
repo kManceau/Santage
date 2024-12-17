@@ -36,6 +36,9 @@
                         <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
                         </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ route('gifts.index') }}">{{ __('Cadeau') }}</a>
+                        </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

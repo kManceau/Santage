@@ -9,7 +9,7 @@ class Gift extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['good','name','description'];
+    protected $fillable = ['good','name','description','category_id'];
 
     public function category()
     {
