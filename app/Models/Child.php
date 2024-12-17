@@ -9,7 +9,7 @@ class Child extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['first_name','last_name','birthdate','country','address','city','postal_code','scolar_note','behavior_note'];
+    protected $fillable = ['first_name','last_name','birthdate','country','address','city','postal_code','scolar_note','behavior_note', 'user_id'];
 
     public function user()
     {
