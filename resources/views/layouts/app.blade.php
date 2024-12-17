@@ -33,8 +33,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                         </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
+                        </li>
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -61,6 +63,8 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    <a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">
+                                        {{ __('Edit Profile') }}</a>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
