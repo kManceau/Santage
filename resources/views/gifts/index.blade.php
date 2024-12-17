@@ -19,6 +19,12 @@
                     <div class="col">
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
+                                <picture>
+                                    <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif">
+                                    <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp">
+                                    <img src="/storage/gifts/{{$gift->id}}.jpg" alt="Picture of {{$gift->name}}"
+                                        class="card-img-top img-fluid" style="max-height: 600px; object-fit: cover; object-position: center;" loading="lazy" />
+                                </picture>
                                 <p class="card-text"><strong>{{ $gift->name }}</strong> </p>
                                 <p class="card-text"><strong>Catégorie:</strong> {{ $gift->category->name }}</p>
                                 <h5 class="card-title">{{ $gift->title }}</h5>

@@ -17,7 +17,7 @@ SANTAGE - Mon compte
             <source srcset="/storage/users/{{$user->id}}.avif" type="image/avif">
             <source srcset="/storage/users/{{$user->id}}.webp" type="image/webp">
             <img src="/storage/users/{{$user->id}}.jpg" alt="Picture of {{$user->name}}"
-                    class="card-img-top img-fluid" style="max-height: 600px; object-fit: cover; object-position: center;" loading="lazy"/>
+                class="card-img-top img-fluid" style="max-height: 600px; object-fit: cover; object-position: center;" loading="lazy" />
         </picture>
 
         <form class="col-4 mx-auto" action="{{ route('users.update', $user) }}" method="POST" enctype="multipart/form-data">
@@ -36,11 +36,11 @@ SANTAGE - Mon compte
             </div>
 
             <div class="row mb-3">
-                        <div class="form-group my-3">
-                                <label for="avatar" class="mb-2">Avatar (Optional)</label><br>
-                                <input type="file" class="form-control" id="avatar" name="avatar" >
-                            </div>
-                            </div>
+                <div class="form-group my-3">
+                    <label for="avatar" class="mb-2">Avatar (Optional)</label><br>
+                    <input type="file" class="form-control" id="avatar" name="avatar">
+                </div>
+            </div>
 
             <button type="submit" class="btn btn-primary">Valider</button>
         </form>
