@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Services\ImageService;
 
 class UserController extends Controller
 {
@@ -68,7 +69,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user, ImageService $imageService)
     {
         if (Auth::user()->id == $user->id || Auth::user()->role == 'santa') {
             $request->validate([
@@ -78,7 +79,9 @@ class UserController extends Controller
 
 
             $user->update($request->all());
-
+            if($request->hasFile('avatar')){
+                $imageService->uploadImages($request->file('avatar'), $user->id, 'users');
+            }
             return back()->with('message', 'Le compte a bien été modifié.');
         } else {
             return redirect()->back()->withErrors(['erreur' => 'Suppression du compte impossible']);
@@ -88,8 +91,15 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, ImageService $imageService)
     {
-        //
+        $user = User::find($id);
+        if (Auth::user()->id == $user->id || Auth::user()->role == 'santa') {
+            $imageService->deleteImages($user->id, 'users');
+            $user->delete();
+            return redirect()->route('home')->with('message', 'Le compte a bien été supprimé'); 
+        } else { 
+         return redirect()->back()->withErrors(['erreur' => 'Suppression du compte impossible']);
+        }
     }
 }
