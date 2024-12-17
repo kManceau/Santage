@@ -19,11 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="country">Country</label>
-                <select name="country" id="country" class="form-control">
-                    @foreach ($countries as $country)
-                        <option value="{{ $country }}">{{ $country }}</option>
-                    @endforeach
-                </select>
+                <input type="text" name="country" id="country" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="address">Address</label>

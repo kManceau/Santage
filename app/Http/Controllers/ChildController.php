@@ -22,9 +22,8 @@ class ChildController extends Controller
      */
     public function create()
     {
-        $countries = $this->getCountries();
         $users = User::pluck('name', 'id');
-        return view('children.create', compact('countries', 'users'));
+        return view('children.create', compact( 'users'));
     }
 
     /**
@@ -59,9 +58,8 @@ class ChildController extends Controller
      */
     public function edit(Child $child)
     {
-        $countries = $this->getCountries();
         $users = User::pluck('name', 'id');
-        return view('children.edit', compact('child', 'countries', 'users'));
+        return view('children.edit', compact('child',  'users'));
     }
 
     /**
@@ -93,15 +91,5 @@ class ChildController extends Controller
     {
         $child->delete();
         return redirect()->route('children.index')->with('success', 'Child deleted successfully.');
-    }
-
-    /**
-     * Utility: Get the list of all countries.
-     */
-    private function getCountries()
-    {
-        return [
-            'United States', 'Canada', 'France', 'Germany', 'Australia', 'Japan', 'India', 'China', 'Brazil', 'South Africa'
-        ];
     }
 }

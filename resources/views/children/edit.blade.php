@@ -24,11 +24,7 @@
 
             <div class="form-group">
                 <label for="country">Country</label>
-                <select name="country" id="country" class="form-control">
-                    @foreach ($countries as $country)
-                        <option value="{{ $country }}" {{ $child->country == $country ? 'selected' : '' }}>{{ $country }}</option>
-                    @endforeach
-                </select>
+                <input type="text" name="country" id="country" class="form-control" value="{{ $child->country }}" required>
             </div>
 
             <div class="form-group">
