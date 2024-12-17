@@ -45,6 +45,13 @@
                                     Good
                                 </label>
                             </div>
+
+                            <div class="row mb-3">
+                        <div class="form-group my-3">
+                                <label for="image" class="mb-2">Image (Optional)</label><br>
+                                <input type="file" class="form-control" id="image" name="image" >
+                            </div>
+                            </div>
                             <button type="submit" class="btn btn-primary  rounded-pill shadow-sm">
                                 Ajouter un cadeau </button>
                         </form>
