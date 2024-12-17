@@ -24,7 +24,11 @@
 
             <div class="form-group">
                 <label for="country">Country</label>
-                <input type="text" name="country" id="country" class="form-control" value="{{ $child->country }}" required>
+                <select name="country" id="country" class="form-control">
+                    @foreach ($countries as $country)
+                        <option value="{{ $country['name']['common'] }}" {{ $child->country == $country['name']['common'] ? 'selected' : '' }}>{{ $country['name']['common'] }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
