@@ -59,126 +59,114 @@
         line-height: 1.6;
     }
 }
-* {
-    box-sizing: border-box;
-}
+
 
    
-html,
-body {
+.card-main{
     position: relative;
-    height: 100%;
-}
-
-body {
-    background: #1f2229;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-}
-.card {
-    position: relative;
-    height: calc(100% - 30px);
-    width: calc(33.333% - 30px);
-    background: #fff;
-    overflow: hidden;
-    float: left;
-    margin: 15px;
-    &__content {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: #000;
-        top: calc(100% - 80px);
-        left: 0;
-        opacity: 1;
-        transition: all 0.75s ease-in-out;
-
-        display: flex;
-        align-items: top;
-        justify-content: center;
-
-        &-inner {
-            position: relative;
-            display: block;
-            height: 80px;
-
-            display: flex;
-            flex-flow: column nowrap;
-            text-align: center;
-            justify-content: center;
-
+    z-index: 1;
+    background: rgb(43, 42, 42);
+    color: black;
+    padding: 50px;
+    .card {
+        position: relative;
+        width: calc(33.333% - 30px);
+        background: #fff;
+        overflow: hidden;
+        float: left;
+        margin: 15px;
+        padding-left:0px !important;
+        padding-right: 0px !important;
+        &__content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            top: calc(100% - 80px);
+            left: 0;
+            opacity: 1;
             transition: all 0.75s ease-in-out;
+    
+            display: flex;
+            align-items: top;
+            justify-content: center;
+    
+            &-inner {
+                position: relative;
+                display: block;
+                height: 80px;
+    
+                display: flex;
+                flex-flow: column nowrap;
+                text-align: center;
+                justify-content: center;
+    
+                transition: all 0.75s ease-in-out;
+            }
+            &:after {
+                position: absolute;
+                top: 10px;
+                
+                width: 30px;
+                height: 30px;
+                
+                content: "";
+            }
+        }
+        &__title {
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        &__description {
+            color: #eee;
         }
         &:after {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 30px;
+            bottom: 10px;
+            
+            
             height: 30px;
-            border-color: #fff;
-            border-style: solid;
-            border-width: 2px 0 0 2px;
+            
             content: "";
         }
-    }
-    &__title {
-        font-weight: 600;
-        text-transform: uppercase;
-        color: #fff;
-        letter-spacing: 1px;
-    }
-    &__description {
-        color: #eee;
-    }
-    &:after {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        width: 30px;
-        height: 30px;
-        border-color: #fff;
-        border-style: solid;
-        border-width: 0 2px 2px 0;
-        content: "";
-    }
-    &.a100,
-    &:hover {
-        cursor: pointer;
-        .card__content {
-            top: 0;
-            background: #000;
-            transition: all 1s ease-in-out;
-            &-inner{
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-                transition: all 1s ease-in-out;
-            }
-        }
-    } // demo
-    &.a50{
-        .card__content {
-            top: 50%;
-            &-inner{
-                height: 50%;}
-        }
+        &.a100,
         &:hover {
+            cursor: pointer;
             .card__content {
                 top: 0;
+                background: #000;
+                transition: all 1s ease-in-out;
                 &-inner{
-                    height: 100%;}
+                    height: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 1s ease-in-out;
+                }
+            }
+        } // demo
+        &.a50{
+            .card__content {
+                top: 50%;
+                &-inner{
+                    height: 50%;}
+            }
+            &:hover {
+                .card__content {
+                    top: 0;
+                    &-inner{
+                        height: 100%;}
+                }
             }
         }
-    }
-    &.a100{
-        &:hover {
-            .card__content {
-                top: calc(100% - 80px);
-                &-inner{
-                    height: 80px;}
+        &.a100{
+            &:hover {
+                .card__content {
+                    top: calc(100% - 80px);
+                    &-inner{
+                        height: 80px;}
+                }
             }
         }
     }
