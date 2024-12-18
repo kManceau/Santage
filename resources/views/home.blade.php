@@ -26,12 +26,21 @@
 
 
         <div class="card">
+            @if(file_exists(storage_path('app/public/gifts/' . $gift->id . '.avif')))
             <picture>
                 <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif">
                 <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp">
                 <img src="/storage/gifts/{{$gift->id}}.jpg" alt="Picture of {{$gift->name}}"
                     class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
             </picture>
+            @else
+                <picture>
+                    <source srcset="/storage/gifts/default.avif" type="image/avif">
+                    <source srcset="/storage/gifts/default.webp" type="image/webp">
+                    <img src="/storage/gifts/default.jpg" alt="Default Gift Picture"
+                         class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
+                </picture>
+            @endif
             <div class="card__content">
                 <div class="card__content-inner">
                     <div class="card__title">{{ $gift->name }}</div>

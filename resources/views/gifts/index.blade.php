@@ -19,12 +19,21 @@
                     <div class="col">
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
-                                <picture>
-                                    <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif">
-                                    <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp">
-                                    <img src="/storage/gifts/{{$gift->id}}.jpg" alt="Picture of {{$gift->name}}"
-                                        class="card-img-top img-fluid" style="max-height: 600px; object-fit: cover; object-position: center;" loading="lazy" />
-                                </picture>
+                                @if(file_exists(storage_path('app/public/gifts/' . $gift->id . '.avif')))
+                                    <picture>
+                                        <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif">
+                                        <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp">
+                                        <img src="/storage/gifts/{{$gift->id}}.jpg" alt="Picture of {{$gift->name}}"
+                                             class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
+                                    </picture>
+                                @else
+                                    <picture>
+                                        <source srcset="/storage/gifts/default.avif" type="image/avif">
+                                        <source srcset="/storage/gifts/default.webp" type="image/webp">
+                                        <img src="/storage/gifts/default.jpg" alt="Default Gift Picture"
+                                             class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
+                                    </picture>
+                                @endif
                                 <p class="card-text"><strong>{{ $gift->name }}</strong> </p>
                                 <p class="card-text"><strong>Catégorie:</strong> {{ $gift->category->name }}</p>
                                 <h5 class="card-title">{{ $gift->title }}</h5>
