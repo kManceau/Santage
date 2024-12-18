@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scss')
+    @vite(['resources/sass/home.scss'])
+@endsection
+
 @section('content')
 
 <body>
