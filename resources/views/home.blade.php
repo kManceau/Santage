@@ -20,25 +20,23 @@
         <a href="{{ route('children.create') }}" class="btn">Inscrire mon enfant</a>
     </div>
 
-    <!-- Контент -->
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 content-overlay">
+    <!-- Contents -->
+    <div class="row card-main">
         @foreach($gifts as $gift)
-
-
         <div class="card">
             @if(file_exists(storage_path('app/public/gifts/' . $gift->id . '.avif')))
             <picture>
-                <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif">
-                <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp">
+                <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif" class="img-fluid">
+                <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp" class="img-fluid">
                 <img src="/storage/gifts/{{$gift->id}}.jpg" alt="Picture of {{$gift->name}}"
-                    class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
+                    class="card-img-top img-fluid " style="max-height: 250px; object-fit: cover; object-position: center;" loading="lazy" />
             </picture>
             @else
                 <picture>
                     <source srcset="/storage/gifts/default.avif" type="image/avif">
                     <source srcset="/storage/gifts/default.webp" type="image/webp">
                     <img src="/storage/gifts/default.jpg" alt="Default Gift Picture"
-                         class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
+                         class="card-img-top img-fluid " style="max-height: 250px; object-fit: cover; object-position: center;" loading="lazy" />
                 </picture>
             @endif
             <div class="card__content">
