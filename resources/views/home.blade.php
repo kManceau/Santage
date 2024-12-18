@@ -1,23 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
+<body>
+    <div class="hero-image-container">
+        <img class="hero" src="{{ asset('/storage/fonts/Santa_font.jpg') }}" alt="font">
+        <a href="{{ route('children.create') }}" class="btn">Inscrire mon enfant</a>
     </div>
-</div>
+    
+    <!-- Контент -->
+    <div class="content-overlay">
+        <h1>Welcome!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum augue nec lorem viverra, a tincidunt elit viverra.</p>
+        <p>Proin euismod, eros id consequat varius, velit magna sagittis mi, sit amet tincidunt sapien mi at ligula.</p>
+        <p>Praesent vitae quam nec eros feugiat dictum. Curabitur auctor ut nisi vitae pharetra. Integer ut sapien a nibh efficitur fermentum.</p>
+        <p>Mauris nec erat non erat tempus porttitor. Vivamus sollicitudin ultricies lorem, non elementum neque malesuada sed.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum augue nec lorem viverra, a tincidunt elit viverra.</p>
+    </div>
+</body>
 @endsection
