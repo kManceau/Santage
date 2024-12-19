@@ -4,6 +4,7 @@
     <script>
         const gifts = @json($gifts);
         const imageList = @json(scandir(storage_path('app/public/gifts/')));
+        const categories = @json($categories);
     </script>
     @vite(['resources/js/elf/gift_add.js'])
 @endsection

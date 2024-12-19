@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Child;
 use App\Models\Gift;
 use Illuminate\Http\Request;
@@ -25,11 +26,12 @@ class ElfController extends Controller
 
     public function child_gift_add($child_id){
         $child = Child::find($child_id);
+        $categories = Category::all();
         $average = ($child->scolar_note + $child->behavior_note) / 2;
         $average > 10 ?
             $gifts = Gift::where('good', true)->get() :
             $gifts = Gift::where('good', false)->get();
-        return view('elves.gift_add', compact(['child', 'average', 'gifts']));
+        return view('elves.gift_add', compact(['child', 'average', 'gifts', 'categories']));
     }
 
     public function child_gift_store(Request $request){
