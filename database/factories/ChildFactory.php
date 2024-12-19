@@ -22,6 +22,7 @@ class ChildFactory extends Factory
                 'last_name' => fake()->name(),
                 'country' => fake()->country(),
                 'birthdate' => fake()->date(),
+                'gender' => fake()->randomElement(['male', 'female']),
                 'address' => fake()->address(),
                 'city' => fake()->city(),
                 'postal_code' => fake()->postcode(),
