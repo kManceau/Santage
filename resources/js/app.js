@@ -6,6 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+import { christmasEgg } from './christmasEgg.js';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -37,3 +38,6 @@ app.component('example-component', ExampleComponent);
  */
 
 app.mount('#app');
+christmasEgg()
+
+

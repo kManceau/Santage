@@ -1,3 +1,5 @@
+import { christmasEgg } from '../christmasEgg.js';
+
 const giftSelect = document.getElementById('gift-select');
 const giftName = document.getElementById('gift-name');
 const giftDescription = document.getElementById('gift-description');
@@ -27,12 +29,13 @@ const replaceGiftInfos = (gift) => {
     if (imageExists(gift.id + '.avif')) {
         giftAvif.src = '/storage/gifts/'+ gift.id + '.avif';
         giftWebp.src = '/storage/gifts/'+ gift.id + '.webp';
-        giftJpg.src = '/storage/gifts/'+ gift.id + '.jpg';;
+        giftJpg.src = '/storage/gifts/'+ gift.id + '.jpg';
     } else {
         giftAvif.src = '/storage/gifts/default.avif';
         giftWebp.src = '/storage/gifts/default.webp';
         giftJpg.src = '/storage/gifts/default.jpg';
     }
+    christmasEgg();
 }
 
 
