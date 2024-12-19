@@ -58,8 +58,8 @@
             <label for="gender" class="form-label">Gender</label>
             <select class="form-select" id="gender" name="gender" required>
                 <option value="" disabled selected>Select Gender</option>
-                <option value="Male">male</option>
-                <option value="Female">female</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
             </select>
         </div>
 

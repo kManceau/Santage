@@ -53,8 +53,8 @@
 
         <div class="form-group">
             <select class="form-select" id="gender" name="gender" required>
-                <option value="Male" {{ old( $child->gender) == 'male' ? 'selected' : '' }}>male</option>
-                <option value="Female" {{ old( $child->gender) == 'female' ? 'selected' : '' }}>female</option>
+                <option value="male" {{ old( $child->gender) == 'male' ? 'selected' : '' }}>male</option>
+                <option value="female" {{ old( $child->gender) == 'female' ? 'selected' : '' }}>female</option>
             </select>
         </div>
 
