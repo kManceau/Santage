@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <h1>Détails de l'enfant</h1>
 
         <table class="table">

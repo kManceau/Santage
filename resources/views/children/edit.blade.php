@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
+<div class="pt-5">
     <h1>Edit Child</h1>
     <form action="{{ route('children.update', $child->id) }}" method="POST">
         @csrf

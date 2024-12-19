@@ -21,8 +21,8 @@
     @vite(['resources/sass/header.scss'])
 </head>
 <body>
-        @include('elements/header')
-            @yield('content')
-    </div>
+    @include('elements/header')
+        @yield('content')
+    @include('elements/footer')
 </body>
 </html>

@@ -5,7 +5,7 @@ SANTAGE - Mon compte
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container pt-5">
 
     <h1>Mon compte</h1>
 

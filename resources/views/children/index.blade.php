@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <h1>Children</h1>
         <a href="{{ route('children.create') }}" class="btn btn-primary">Add a child</a>
         <table class="table mt-4">

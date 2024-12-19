@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container pt-5">
     <h1>Add a child</h1>
     <form action="{{ route('children.store') }}" method="POST">
         @csrf
