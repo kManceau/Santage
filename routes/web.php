@@ -22,6 +22,8 @@ Route::get('/elf/home', [App\Http\Controllers\ElfController::class, 'index'])->n
     ->middleware('auth');
 Route::get('/elves/child_gift/add/{child_id}', [App\Http\Controllers\ElfController::class, 'child_gift_add'])->name('child_gift_add')
     ->middleware('auth');
+Route::post('/elves/child_gift/store', [App\Http\Controllers\ElfController::class, 'child_gift_store'])->name('child_gift_store')
+    ->middleware('auth');
 Route::delete('/elves/child_gift/{child_id}/{gift_id}', [App\Http\Controllers\ElfController::class, 'delete_gift_child'])->name('delete_gift_child')
     ->middleware('auth');
 

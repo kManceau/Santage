@@ -30,7 +30,7 @@
             <p>
                 Comme {{ $child->gender == "male" ? 'il' : 'elle' }} a été {{ $average > 10 ? 'gentil' : 'méchant' }}, voici la liste des cadeaux qui correspondent :
             </p>
-            <form method="POST" action="{{ route('gifts.store') }}">
+            <form method="POST" action="{{ route('child_gift_store') }}">
                 @csrf
                 <label for="gift" class="form-label">Cadeau :</label>
                 <select name="gift" id="gift-select" class="form-control">
@@ -54,8 +54,8 @@
                         <p class="my-0"><strong>Categorie : </strong><span id="gift-category"></span></p>
                     </div>
                 </div>
-        </div>
                 <button type="submit" class="btn btn-primary">Attribuer le cadeau</button>
             </form>
+        </div>
     </div>
 @endsection
