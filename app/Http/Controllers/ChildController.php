@@ -97,7 +97,8 @@ class ChildController extends Controller
     }
 
     public function getCountries(){
-        $countries = Http::get('https://restcountries.com/v3.1/all?fields=name');
+        $countries = Http::withOptions(['verify' => false])
+            ->get('https://restcountries.com/v3.1/all?fields=name');
         $countries = $countries->json();
         usort($countries, function ($a, $b) {
             return $a['name']['common'] <=> $b['name']['common'];

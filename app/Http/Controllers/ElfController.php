@@ -12,7 +12,7 @@ class ElfController extends Controller
 {
     public function index()
     {
-        $children = Child::where('user_id', Auth::user()->id)->get();
+        $children = Child::where('user_id', Auth::user()->id)->paginate(15);
         return view('elves.index', compact('children'));
     }
 
