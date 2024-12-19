@@ -55,6 +55,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Attribuer le cadeau</button>
+                <a href="{{ url()->previous() }}" class="btn btn-danger ms-3">Retour</a>
             </form>
         </div>
     </div>
