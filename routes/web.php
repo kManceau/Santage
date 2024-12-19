@@ -17,7 +17,8 @@ Auth::routes();
 //}
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('redirect_if_elf');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
+    ->middleware('redirect_if_elf');
 Route::get('/elf/home', [App\Http\Controllers\ElfController::class, 'index'])->name('elf_home')
     ->middleware('auth');
 Route::get('/elves/child_gift/add/{child_id}', [App\Http\Controllers\ElfController::class, 'child_gift_add'])->name('child_gift_add')
