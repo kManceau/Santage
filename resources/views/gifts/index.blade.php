@@ -30,7 +30,7 @@
                 <button type="button" id="search-edit-button" class="btn btn-primary">Editer</button>
             </div>
             <div class="col-auto">
-                <form action="/" method="POST" class="mt-1" id="search-delete-form">
+                <form action="/" method="POST" id="search-delete-form">
                     @csrf
                     @method('DELETE')
                     <button type="submit" id="search-delete-button" class="btn btn-danger">Supprimer</button>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="row">
-            <p>Trier les cadeaux : </p>
+            <p class="my-1">Trier les cadeaux : </p>
             <div class="d-flex justify-content-start mb-3">
                 <button class="btn btn-primary me-2" onclick="sortPosts('name', 'asc')">Nom</button>
                 <button class="btn btn-primary me-2" onclick="sortPosts('good', 'desc', 'name', 'asc')">Type</button>
