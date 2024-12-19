@@ -17,7 +17,21 @@ class GiftController extends Controller
         $allGifts = Gift::orderBy('name', 'asc')->get();
         $sortColumn = $request->input('sort_column', 'name');
         $sortDirection = $request->input('sort_direction', 'asc');
-        $gifts = Gift::orderBy($sortColumn, $sortDirection)->paginate(15);
+        $sortColumn2 = $request->input('sort_column2');
+        $sortDirection2 = $request->input('sort_direction2');
+        if($sortColumn2 && $sortDirection2){
+            $gifts = Gift::orderBy($sortColumn, $sortDirection)->orderBy($sortColumn2, $sortDirection2)->paginate(15);
+        } elseif($sortColumn === 'category_id'){
+            $gifts = Gift::with('category')
+                ->join('categories', 'gifts.category_id', '=', 'categories.id')
+                ->orderBy('categories.name', $sortDirection)
+                ->select('gifts.*')
+                ->paginate(15);
+
+        }
+        else{
+            $gifts = Gift::orderBy($sortColumn, $sortDirection)->paginate(15);
+        }
         return view('gifts.index', compact(['gifts', 'allGifts']));
     }
 
