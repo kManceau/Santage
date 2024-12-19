@@ -21,11 +21,8 @@
     @vite(['resources/sass/header.scss'])
 </head>
 <body>
-    
-        <main class="my-1">
         @include('elements/header')
             @yield('content')
-        </main>
     </div>
 </body>
 </html>

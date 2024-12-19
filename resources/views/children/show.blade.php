@@ -46,6 +46,10 @@
                 <td>{{ $child->behavior_note }}</td>
             </tr>
             <tr>
+                <th>Sexe</th>
+                <td>{{ $child->gender }}</td>
+            </tr>
+            <tr>
                 <th>Utilisateur associé</th>
                 <td>{{ $child->user->name }}</td>
             </tr>
