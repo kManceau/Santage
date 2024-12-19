@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <h1>Edit Category</h1>
         <form action="{{ route('categories.update', $category) }}" method="POST">
             @csrf

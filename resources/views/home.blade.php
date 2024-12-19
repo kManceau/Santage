@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('scss')
-    @vite(['resources/sass/home.scss'])
+@vite(['resources/sass/home.scss'])
 @endsection
 
 @section('content')
 
 <body>
     <div class="content-overlay">
-        <h1>Welcome!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum augue nec lorem viverra, a tincidunt elit viverra.</p>
-        <p>Proin euismod, eros id consequat varius, velit magna sagittis mi, sit amet tincidunt sapien mi at ligula.</p>
-        <p>Praesent vitae quam nec eros feugiat dictum. Curabitur auctor ut nisi vitae pharetra. Integer ut sapien a nibh efficitur fermentum.</p>
-        <p>Mauris nec erat non erat tempus porttitor. Vivamus sollicitudin ultricies lorem, non elementum neque malesuada sed.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum augue nec lorem viverra, a tincidunt elit viverra.</p>
+        <h1 class="m-0 p-2">Bienvenue sur la Liste de Vœux du Père Noël !</h1>
+        <p>Bienvenue sur le site officiel du Père Noël ! Ici, les parents peuvent inscrire leurs enfants afin qu'ils reçoivent un cadeau spécial du Père Noël pour Noël.</p>
+        <p>Grâce à cette plateforme, vous pouvez ajouter les informations de votre enfant à la liste du Père Noël, lui permettant de préparer quelque chose de magique pour eux. Commencez facilement en fournissant quelques détails essentiels sur votre enfant et ses réalisations cette année.</p>
+        <p>Une fois que votre enfant est ajouté à la liste, le Père Noël examinera les informations et enverra une demande à ses fidèles lutins. Ces derniers choisiront avec soin un cadeau en fonction des accomplissements, du comportement et des préférences de votre enfant.</p>
+        <p class=" m-0 p-4">Ce site vous permet de faire vivre à votre famille la vraie magie de Noël !</p>
+
     </div>
     <div class="hero-image-container">
         <img class="hero" src="{{ asset('/storage/fonts/Santa_font.jpg') }}" alt="font">
@@ -32,12 +32,12 @@
                     class="card-img-top img-fluid " style="max-height: 250px; object-fit: cover; object-position: center;" loading="lazy" />
             </picture>
             @else
-                <picture>
-                    <source srcset="/storage/gifts/default.avif" type="image/avif">
-                    <source srcset="/storage/gifts/default.webp" type="image/webp">
-                    <img src="/storage/gifts/default.jpg" alt="Default Gift Picture"
-                         class="card-img-top img-fluid " style="max-height: 250px; object-fit: cover; object-position: center;" loading="lazy" />
-                </picture>
+            <picture>
+                <source srcset="/storage/gifts/default.avif" type="image/avif">
+                <source srcset="/storage/gifts/default.webp" type="image/webp">
+                <img src="/storage/gifts/default.jpg" alt="Default Gift Picture"
+                    class="card-img-top img-fluid " style="max-height: 250px; object-fit: cover; object-position: center;" loading="lazy" />
+            </picture>
             @endif
             <div class="card__content">
                 <div class="card__content-inner">

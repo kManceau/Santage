@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         @if(session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}

@@ -3,7 +3,7 @@
     position: sticky; /* Important! Donne un contexte de positionnement pour les éléments positionnés absolument */
     top: 0;
     width: 100%;
-    height: 100vh; // L'image occupe toute la hauteur de l'écran
+    height: 50vh; // L'image occupe toute la hauteur de l'écran
     overflow: hidden;
     z-index: 0; // Ce niveau de z-index doit être à zéro car le bouton sera au-dessus
 
@@ -50,11 +50,10 @@
     position: relative;
     z-index: 1;
     background: rgb(211, 211, 211);
-    color: black;
-    padding: 50px;
+    color: black;  
 
     h1, p {
-        margin: 20px auto;
+        margin-inline: 20px auto;
         text-align: center;
         line-height: 1.6;
     }
