@@ -12,10 +12,13 @@ class GiftController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $gifts = Gift::all();
-        return view('gifts.index', compact('gifts'));
+        $allGifts = Gift::orderBy('name', 'asc')->get();
+        $sortColumn = $request->input('sort_column', 'name');
+        $sortDirection = $request->input('sort_direction', 'asc');
+        $gifts = Gift::orderBy($sortColumn, $sortDirection)->paginate(15);
+        return view('gifts.index', compact(['gifts', 'allGifts']));
     }
 
     /**
@@ -34,11 +37,11 @@ class GiftController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'description' => 'required', 
-            'good' => 'boolean', 
+            'description' => 'required',
+            'good' => 'boolean',
             'category_id' => 'required',
         ]);
-    
+
 
         $gift = new Gift([
             'name' => $request->name,
@@ -82,8 +85,8 @@ class GiftController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required',
-            'description' => 'required', 
-            'good' => 'boolean', 
+            'description' => 'required',
+            'good' => 'boolean',
             'category_id' => 'required',
         ]);
 

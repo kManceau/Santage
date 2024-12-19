@@ -1,70 +1,85 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-10 mx-auto">
-            <div class="bg-white rounded-lg shadow-sm p-5">
-                <h3 class="mb-4">Liste des Cadeau</h3>
+    <div class="container">
+        @if(session()->get('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
 
-                @if(session()->get('success'))
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
-                </div>
-                @endif
-
-                <a href="{{ route('gifts.create')}}" class="btn btn-primary btn-sm mb-4">Créer un cadeau</a>
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    @foreach($gifts as $gift)
+        <div class="row mb-3">
+            <p class="h1">Voici la liste des cadeaux</p>
+        </div>
+            <div class="row mb-3">
+                <form class="row g-3 align-items-center" action="{{ route('gifts.index') }}" method="GET">
+                    <label for="gift" class="form-label my-0">Choisis un cadeau :</label>
                     <div class="col">
-                        <div class="card h-100 shadow-sm">
-                            <div class="card-body">
-                                @if(file_exists(storage_path('app/public/gifts/' . $gift->id . '.avif')))
-                                    <picture>
-                                        <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif">
-                                        <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp">
-                                        <img src="/storage/gifts/{{$gift->id}}.jpg" alt="Picture of {{$gift->name}}"
-                                             class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
-                                    </picture>
-                                @else
-                                    <picture>
-                                        <source srcset="/storage/gifts/default.avif" type="image/avif">
-                                        <source srcset="/storage/gifts/default.webp" type="image/webp">
-                                        <img src="/storage/gifts/default.jpg" alt="Default Gift Picture"
-                                             class="card-img-top img-fluid rounded-3" style="max-height: 300px; object-fit: cover; object-position: center;" loading="lazy" />
-                                    </picture>
-                                @endif
-                                <p class="card-text"><strong>{{ $gift->name }}</strong> </p>
-                                <p class="card-text"><strong>Catégorie:</strong> {{ $gift->category->name }}</p>
-                                <h5 class="card-title">{{ $gift->title }}</h5>
-                                <p class="card-text text-muted">{{ Str::limit($gift->description, 100) }}</p>
+                        <select name="gift" id="gift-select" class="form-select">
+                            @foreach($allGifts as $gift)
+                                <option value="{{ $gift->id }}">{{ $gift->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" id="search-gift-edit-button" class="btn btn-primary">Editer</button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" id="search-gift-delete-button" class="btn btn-danger">Supprimer</button>
+                    </div>
+                </form>
+            </div>
 
-                                <!-- Условие для отображения текста в зависимости от good -->
-                                @if($gift->good)
-                                <p class="text-success"><strong>Bon cadeau</strong></p>
-                                @else
-                                <p class="text-danger"><strong>Pauvre cadeau</strong></p>
-                                @endif
-                            </div>
-                            <div class="card-footer d-flex justify-content-between">
-                                <a href="{{ route('gifts.edit', $gift->id)}}" class="btn btn-primary btn-sm">Editer</a>
-                                <form action="{{ route('gifts.destroy', $gift->id)}}" method="POST" style="display: inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" type="submit">Supprimer</button>
-                                </form>
-                            </div>
+            <div class="row">
+                <p>Trier les cadeaux : </p>
+                <div class="d-flex justify-content-start mb-3">
+                    <button class="btn btn-primary me-2" onclick="sortPosts('name', 'asc')">Nom (Croissant)</button>
+                    <button class="btn btn-primary me-2" onclick="sortPosts('name', 'desc')">Nom (Decroissant)</button>
+                    <button class="btn btn-primary me-2" onclick="sortPosts('good', 'desc')">Type (Bon)</button>
+                    <button class="btn btn-primary me-2" onclick="sortPosts('good', 'asc')">Type (Mauvais)</button>
+                </div>
+            </div>
+
+        <div class="row">
+            @foreach ($gifts as $gift)
+                <div class="col-md-4 mb-4">
+                    <div class="card my-2 p-0 {{ $gift->good ? 'text-success' : 'text-danger' }}">
+                        <div class="card-header d-flex justify-content-center align-items-center">
+                            @if(file_exists(storage_path('app/public/gifts/' . $gift->id . '.avif')))
+                                <picture>
+                                    <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif" class="img-fluid">
+                                    <source srcset="/storage/gifts/{{$gift->id}}.webp" type="image/webp" class="img-fluid">
+                                    <img src="/storage/gifts/{{$gift->id}}.jpg" alt="Picture of {{$gift->name}}"
+                                         class="card-img-top img-fluid " style="max-height: 250px; object-fit: cover; object-position: center;" loading="lazy" />
+                                </picture>
+                            @else
+                                <picture>
+                                    <source srcset="/storage/gifts/default.avif" type="image/avif">
+                                    <source srcset="/storage/gifts/default.webp" type="image/webp">
+                                    <img src="/storage/gifts/default.jpg" alt="Default Gift Picture"
+                                         class="card-img-top img-fluid " style="max-height: 250px; object-fit: cover; object-position: center;" loading="lazy" />
+                                </picture>
+                            @endif
+                        </div>
+                        <div class="card-body">
+                            <p class="my-0"><strong>Nom : </strong>{{ $gift->name }}</p>
+                            <p class="my-0"><strong>Description : </strong>{{ $gift->description }}</p>
+                            <p class="my-0"><strong>Categorie : </strong>{{ $gift->category->name }}</p>
                         </div>
                     </div>
-                    @endforeach
                 </div>
-
-
-                @if($gifts->isEmpty())
-                <p class="text-center mt-4">Aucun produit trouvé.</p>
-                @endif
+            @endforeach
+        </div>
+        <div class="row justify-content-center my-4">
+            <div class="col-md-5">
+                {{ $gifts->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>
-</div>
+
+    <script>
+        function sortPosts(column, direction) {
+            window.location.href = `?sort_column=${column}&sort_direction=${direction}`;
+        }
+    </script>
 @endsection
