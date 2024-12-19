@@ -20,7 +20,7 @@ class ElfController extends Controller
         $child = Child::find($child_id);
         $child->gift()->detach($gift_id);
         return redirect()->back()
-            ->with('success', 'Gift removed from child');
+            ->with('success', 'Cadeau repris à ' . $child->first_name . ' ' . $child->last_name);
     }
 
     public function child_gift_add($child_id){
@@ -38,6 +38,6 @@ class ElfController extends Controller
         $child = Child::find($child_id);
         $child->gift()->attach($gift_id);
         return redirect()->route('elf_home')
-            ->with('success', 'Gift added to child');
+            ->with('success', 'Cadeau attribué à ' . $child->first_name . ' ' . $child->last_name);
     }
 }
