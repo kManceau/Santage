@@ -12,7 +12,7 @@
                 <th>First Name</th>
                 <th>Country</th>
                 <th>Elf</th>
-                <th>Actions</th>
+                <th>Actions</th>      
             </tr>
             </thead>
             <tbody>
