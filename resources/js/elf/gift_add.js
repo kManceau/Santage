@@ -23,6 +23,7 @@ function imageExists(imageName) {
 const replaceGiftInfos = (gift) => {
     giftName.textContent = gift.name;
     giftDescription.textContent = gift.description;
+    giftCategory.textContent = categories.find(category => category.id === gift.category_id).name;
     if (imageExists(gift.id + '.avif')) {
         giftAvif.src = '/storage/gifts/'+ gift.id + '.avif';
         giftWebp.src = '/storage/gifts/'+ gift.id + '.webp';
