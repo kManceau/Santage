@@ -12,8 +12,13 @@ class ElfController extends Controller
 {
     public function index()
     {
-        $children = Child::where('user_id', Auth::user()->id)->paginate(15);
-        return view('elves.index', compact('children'));
+        $children = Child::where('user_id', Auth::user()->id)
+            ->orderBy('first_name')
+            ->paginate(15);
+        $childrenWG = $children->reject(function ($child) {
+           return $child->gift()->count() > 0;
+        });
+        return view('elves.index', compact(['children', 'childrenWG']));
     }
 
     public function delete_gift_child($child_id, $gift_id)
