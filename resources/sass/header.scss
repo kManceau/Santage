@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
 @import url('https://fonts.cdnfonts.com/css/christmas-5');
 
-body {
-  background-color: #eee;
-}
+
 
 .navbar-nav > li > a {
   text-transform: uppercase;
@@ -72,7 +70,7 @@ body {
     color: #000000 !important;
 }
 .dropdown-menu {
-  background: rgb(252, 0, 0);
+  background: rgb(255, 0, 0);
   .dropdown-divider{
     background: rgb(255, 255, 255);
     color: white ;
