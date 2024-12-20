@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectIfElf
+class RedirectHome
 {
     /**
      * Handle an incoming request.
@@ -18,6 +18,8 @@ class RedirectIfElf
     {
         if(Auth::check() && Auth::user()->role === 'elf') {
             return redirect()->route('elf_home');
+        } elseif(Auth::check() && Auth::user()->role === 'santa'){
+            return redirect()->route('santa_home');
         }
         return $next($request);
     }

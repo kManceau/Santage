@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('postal_code');
             $table->decimal('scolar_note');
             $table->decimal('behavior_note');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->nullable()->constrained('users');
         });
     }
 

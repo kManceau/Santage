@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('scss')
-@vite(['resources/sass/home.scss'])
+@vite(['resources/sass/home.scss', 'resources/js/noelEgg.js'])
 @endsection
 
 @section('content')

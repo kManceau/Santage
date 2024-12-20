@@ -62,8 +62,20 @@
                     </li>
                     @elseif (Auth::user()->role === 'santa')
                     <li class="dropdown-item">
-                        <a class="nav-link" href="#">{{ __('Attribuer un lutin aux enfants') }}</a>
+                        <a class="nav-link" href="{{ route('santa_home') }}">{{ __('Attribuer un lutin aux enfants') }}</a>
                     </li>
+                            <li class="dropdown-item">
+                                <a class="nav-link" href="{{ route('children.index') }}">{{ __('Gérer les enfants') }}</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="nav-link" href="{{ route('gifts.index') }}">{{ __('Gérer les cadeaux') }}</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Gérer les catégories de cadeaux') }}</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Gérer les lutins') }}</a>
+                            </li>
                     @endif
                     @endguest
 
