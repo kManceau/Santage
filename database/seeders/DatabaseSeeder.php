@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             ChildSeeder::class,
             CategorySeeder::class,
             GiftSeeder::class,
-            GiftChildSeeder::class,
+//            GiftChildSeeder::class,
         ]);
     }
 }

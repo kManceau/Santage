@@ -18,8 +18,8 @@ class ChildFactory extends Factory
     public function definition(): array
     {
         return [
-                'first_name' => fake()->name(),
-                'last_name' => fake()->name(),
+                'first_name' => fake()->firstName(),
+                'last_name' => fake()->lastName(),
                 'country' => fake()->country(),
                 'birthdate' => fake()->date(),
                 'gender' => fake()->randomElement(['male', 'female']),
@@ -28,7 +28,7 @@ class ChildFactory extends Factory
                 'postal_code' => fake()->postcode(),
                 'scolar_note' => fake()->numberBetween(1,20),
                 'behavior_note' => fake()->numberBetween(1,20),
-                'user_id'=> rand(1,User::count())
+                'user_id'=> null,
         ];
     }
 }
