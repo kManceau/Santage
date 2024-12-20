@@ -12,7 +12,7 @@
                 <th>First Name</th>
                 <th>Country</th>
                 <th>Elf</th>
-                <th>Actions</th>      
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +22,11 @@
                     <td>{{ $child->last_name }}</td>
                     <td>{{ $child->first_name }}</td>
                     <td>{{ $child->country }}</td>
+                    @if($child->user_id)
                     <td>{{ $child->user->name }}</td>
+                    @else
+                        <td></td>
+                    @endif
                     <td>
                         <a href="{{ route('children.show', $child->id) }}" class="btn btn-info btn-sm">View</a>
                         <a href="{{ route('children.edit', $child->id) }}" class="btn btn-warning">Edit</a>

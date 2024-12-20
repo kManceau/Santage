@@ -101,6 +101,7 @@
                 <form class="col" action="{{ route('gifts.index') }}" method="GET">
                     <div class="form-group">
                         <select name="search-all" id="search-all-select" class="form-select">
+                            <option value="" disabled selected>Choisis un enfant</option>
                             @foreach($children as $child)
                                 <option value="{{ $child->id }}">{{ $child->first_name . ' ' . $child->last_name }}</option>
                             @endforeach
