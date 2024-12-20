@@ -21,7 +21,7 @@ class ChildFactory extends Factory
                 'first_name' => fake()->firstName(),
                 'last_name' => fake()->lastName(),
                 'country' => fake()->country(),
-                'birthdate' => fake()->date(),
+                'birthdate' => fake()->dateTimeBetween('01-01-2012', '20-12-2024'),
                 'gender' => fake()->randomElement(['male', 'female']),
                 'address' => fake()->streetAddress(),
                 'city' => fake()->city(),
