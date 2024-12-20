@@ -11,10 +11,17 @@
                 {{ session()->get('success') }}
             </div>
         @endif
+        @if(session()->get('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
 
         <div class="row mb-3">
             <p class="h1">Voici la liste des cadeaux</p>
+            <a href="{{ route('gifts.create') }}" class="btn btn-primary col-auto my-3 ms-3">Ajouter un cadeau</a>
         </div>
+
         <label for="search" class="form-label my-0">Choisis un cadeau :</label>
         <div class="row mb-3 g-3 align-items-center">
             <form class="col" action="{{ route('gifts.index') }}" method="GET">
@@ -50,8 +57,8 @@
         <div class="row">
             @foreach ($gifts as $gift)
                 <div class="col-md-4 mb-4">
-                    <div class="card my-2 p-0 {{ $gift->good ? 'text-success' : 'text-danger' }}">
-                        <div class="card-header d-flex justify-content-center align-items-center">
+                    <div class="card h-100 my-2 p-0 {{ $gift->good ? 'text-success' : 'text-danger' }}">
+                        <div class="card-header d-flex justify-content-center align-items-center p-0 m-0">
                             @if(file_exists(storage_path('app/public/gifts/' . $gift->id . '.avif')))
                                 <picture>
                                     <source srcset="/storage/gifts/{{$gift->id}}.avif" type="image/avif"
@@ -78,6 +85,24 @@
                             <p class="my-0"><strong>Nom : </strong>{{ $gift->name }}</p>
                             <p class="my-0"><strong>Description : </strong>{{ $gift->description }}</p>
                             <p class="my-0"><strong>Categorie : </strong>{{ $gift->category->name }}</p>
+                            <div class="row mt-4 mb-0">
+                                <div class="col-md-auto mb-2 mb-md-0">
+                                    <a href="{{ route('gifts.edit', $gift->id) }}"
+                                       class="btn btn-primary rounded-pill shadow-sm d-flex align-items-center">
+                                        Mettre à jour
+                                    </a>
+                                </div>
+                                <div class="col-md-auto">
+                                    <form action="{{ route('gifts.destroy', $gift->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                                class="btn btn-danger rounded-pill d-flex align-items-center card-delete-button">
+                                            Supprimer
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

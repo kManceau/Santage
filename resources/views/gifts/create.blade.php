@@ -22,17 +22,18 @@
                         <!-- Formulaire -->
                         <form method="POST" action="{{ route('gifts.store') }}" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group my-3">
                                 <label>Nom du cadeau</label>
                                 <input type="text" name="name" class="form-control">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group my-3">
                                 <label>Description</label>
                                 <input type="text" name="description" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <select name="category_id" class="custom-select">
-                                    <option value=""> --Catégorie-- </option>
+                            <div class="form-group my-3">
+                                <label for="category_id" class="form-label my-0">Categorie du cadeau : </label>
+                                <select name="category_id" class="form-control custom-select">
+                                    <option value="" disabled> --Catégorie-- </option>
                                     @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -40,14 +41,14 @@
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="good" value="0">
-                                <label for="good">
-                                    <input type="checkbox" name="good" id="good" value="1">
+                                <label for="good" class="form-label">
+                                    <input type="checkbox" name="good" id="good" value="1" class="form-check-input">
                                     Good
                                 </label>
                             </div>
 
                             <div class="row mb-3">
-                        <div class="form-group my-3">
+                        <div class="form-group my-2">
                                 <label for="image" class="mb-2">Image (Optional)</label><br>
                                 <input type="file" class="form-control" id="image" name="image" >
                             </div>
