@@ -21,7 +21,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     ->middleware('redirect_if_elf');
 Route::get('/elf/home', [App\Http\Controllers\ElfController::class, 'index'])->name('elf_home')
     ->middleware('auth');
-Route::get('/ef/child_gift/add/{child_id}', [App\Http\Controllers\ElfController::class, 'child_gift_add'])->name('child_gift_add')
+Route::get('/elf/child_gift/add/{child_id}', [App\Http\Controllers\ElfController::class, 'child_gift_add'])->name('child_gift_add')
     ->middleware('auth');
 Route::post('/elf/child_gift/store', [App\Http\Controllers\ElfController::class, 'child_gift_store'])->name('child_gift_store')
     ->middleware('auth');

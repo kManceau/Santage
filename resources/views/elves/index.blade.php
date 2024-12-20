@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scss')
+    @vite(['resources/js/elf/index.js'])
+@endsection
+
 @section('content')
     <div class="container pt-5">
         @if(session()->get('success'))
@@ -16,11 +20,24 @@
             <div class="row my-2">
                 <p class="h2 mt-2">Il est temps de bosser, ces pauvres enfants n'ont pas de cadeaux !</p>
             </div>
-
-            <div class="row">
+                <label for="search" class="form-label my-0">Choisis un enfant :</label>
+                <div class="row mb-3 g-3 align-items-center">
+                    <form class="col" action="{{ route('gifts.index') }}" method="GET">
+                        <div class="form-group">
+                            <select name="search" id="search-select" class="form-select">
+                                @foreach($childrenWG as $child)
+                                    <option value="{{ $child->id }}">{{ $child->first_name . ' ' . $child->last_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
+                    <div class="col-auto">
+                        <button type="button" id="search-add-button" class="btn btn-primary">Ajouter un cadeau</button>
+                    </div>
+            <div class="row my-3">
                 @foreach ($childrenWG as $child)
                     <div class="col-md-4 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-header">
                                 <h5 class="card-title">{{ $child->first_name }} {{ $child->last_name }}</h5>
                             </div>
@@ -74,13 +91,32 @@
         @endif
 
 
+
         <div class="row my-2">
             <p class="h2 mt-2">Voici tous les enfants dont tu as la charge :</p>
         </div>
+
+            <label for="search-all" class="form-label my-0">Choisis un enfant :</label>
+            <div class="row mb-3 g-3 align-items-center">
+                <form class="col" action="{{ route('gifts.index') }}" method="GET">
+                    <div class="form-group">
+                        <select name="search-all" id="search-all-select" class="form-select">
+                            @foreach($children as $child)
+                                <option value="{{ $child->id }}">{{ $child->first_name . ' ' . $child->last_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </form>
+                <div class="col-auto">
+                    <button type="button" id="search-all-add-button" class="btn btn-primary">Ajouter un cadeau</button>
+                </div>
+
+            </div>
+
         <div class="row">
             @foreach ($children as $child)
                 <div class="col-md-4 mb-4">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-header">
                             <h5 class="card-title">{{ $child->first_name }} {{ $child->last_name }}</h5>
                         </div>

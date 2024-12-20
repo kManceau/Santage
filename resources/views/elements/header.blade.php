@@ -53,18 +53,12 @@
                     </li>
                     @endif
                     @else
-                    <li class="dropdown-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('children.index') }}">{{ __('Children') }}</a>
-                    </li>
-                    <li class="dropdown-item">
-                        <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
-                    </li>
-                    <li class="dropdown-item">
-                        <a class="nav-link" href="{{ route('gifts.index') }}">{{ __('Cadeau') }}</a>
-                    </li>
                     @if (Auth::user()->role === 'elf')
                     <li class="dropdown-item">
-                        <a class="nav-link" href="#">{{ __('Voir mes enfants') }}</a>
+                        <a class="nav-link" href="{{ route('elf_home') }}">{{ __('Attribuer les cadeaux') }}</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="nav-link" href="{{ route('gifts.index') }}">{{ __('Gérer les cadeaux') }}</a>
                     </li>
                     @elseif (Auth::user()->role === 'santa')
                     <li class="dropdown-item">
