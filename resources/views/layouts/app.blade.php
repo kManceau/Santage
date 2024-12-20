@@ -20,9 +20,15 @@
     @yield('scss')
     @vite(['resources/sass/header.scss'])
 </head>
-<body>
-    @include('elements/header')
+
+<body class="d-flex flex-column min-vh-100">
+    @include('elements.header')
+
+    <main class="flex-grow-1">
         @yield('content')
-    @include('elements/footer')
+    </main>
+
+    @include('elements.footer')
 </body>
 </html>
+
