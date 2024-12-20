@@ -1,4 +1,11 @@
-
+body {
+    background: #ff00009f;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
 .hero-image-container {
     position: sticky; /* Important! Donne un contexte de positionnement pour les éléments positionnés absolument */
     top: 0;
@@ -14,7 +21,11 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%); // Dégradé de fond
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.5) 100%
+        ); // Dégradé de fond
         z-index: 1; // Le dégradé sera au-dessus de l'image
     }
 
@@ -30,7 +41,10 @@
         position: absolute;
         top: 50%; /* Centrer le bouton verticalement */
         left: 50%; /* Centrer le bouton horizontalement */
-        transform: translate(-50%, -50%); /* Nécessaire pour centrer précisément le bouton */
+        transform: translate(
+            -50%,
+            -50%
+        ); /* Nécessaire pour centrer précisément le bouton */
         padding: 10px 20px;
         font-size: 20px;
         background-color: #ff0000; /* Couleur de fond du bouton */
@@ -47,24 +61,102 @@
 }
 
 .content-overlay {
-    position: relative;
-    z-index: 1;
-    background: rgb(211, 211, 211);
-    color: black;  
-
-    h1, p {
-        margin-inline: 20px auto;
-        text-align: center;
-        line-height: 1.6;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; // Ensure the parent has a height to center within
+    --s: 75px; /* control the size */
+  
+    --_c:#0000,#fff 1deg 79deg,#0000 81deg;
+    --g0:conic-gradient(from 140deg at 50% 87.5% ,var(--_c));
+    --g1:conic-gradient(from 140deg at 50% 81.25%,var(--_c));
+    --g2:conic-gradient(from 140deg at 50% 75%   ,var(--_c));
+    --g3:conic-gradient(at 10% 20%,#0000 75%,#fff 0);
+    background:
+      var(--g0) 0 calc(var(--s)/-4),var(--g0) var(--s) calc(3*var(--s)/4),
+      var(--g1) ,var(--g1) var(--s) var(--s),
+      var(--g2) 0 calc(var(--s)/ 4),var(--g2) var(--s) calc(5*var(--s)/4),
+      var(--g3) calc( var(--s)/-10) var(--s),
+      var(--g3) calc(9*var(--s)/10) calc(2*var(--s)),
+      repeating-conic-gradient(from 45deg,#a31e39 0 25%,#31570e 0 50%);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+    .blokken{
+            position: relative;
+            background-color: #fff;
+            width: calc(100vw - 10rem);
+            min-height: calc(100vh - 10rem);
+            box-shadow: -0.5rem 0.5rem 1rem rgba(0,0,0,0.3);
+            padding: 5rem;
+            margin: 5rem;
+            font-size: 2rem;
+            background-image: linear-gradient(to bottom, #fff calc(1em - 1px), #ccc calc(1em - 1px), #ccc 1em, #fff 1em);
+            background-position: 0% 1em;
+            background-size: 100% 1em;
+            background-repeat: repeat-y;
+            
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+                box-shadow: -0.5rem 0.5rem 1rem rgba(0,0,0,0.1);
+            }
+            
+            &:before {
+                transform: rotate(-2deg);
+                z-index: -1;
+            }
+            
+            &:after {
+                transform: rotate(2deg);
+                z-index: -2;
+            }
+        }
+        .welcome-title {
+            font-size: 2.5rem;
+            color: #000000; 
+            font-family: "Allerta Stencil", sans-serif;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .welcome-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #000000;
+            text-align: center;
+        }
+        .final-message{
+            font-weight: bold;
+            color: #4caf50;
+            text-align: center;
+        }
     }
-}
 
 
-   
-.card-main{
+.card-main {
     position: relative;
     z-index: 1;
-    background: rgb(43, 42, 42);
+    --s: 75px; /* control the size */
+  
+    --_c:#0000,#fff 1deg 79deg,#0000 81deg;
+    --g0:conic-gradient(from 140deg at 50% 87.5% ,var(--_c));
+    --g1:conic-gradient(from 140deg at 50% 81.25%,var(--_c));
+    --g2:conic-gradient(from 140deg at 50% 75%   ,var(--_c));
+    --g3:conic-gradient(at 10% 20%,#0000 75%,#fff 0);
+    background:
+      var(--g0) 0 calc(var(--s)/-4),var(--g0) var(--s) calc(3*var(--s)/4),
+      var(--g1) ,var(--g1) var(--s) var(--s),
+      var(--g2) 0 calc(var(--s)/ 4),var(--g2) var(--s) calc(5*var(--s)/4),
+      var(--g3) calc( var(--s)/-10) var(--s),
+      var(--g3) calc(9*var(--s)/10) calc(2*var(--s)),
+      repeating-conic-gradient(from 45deg,#a31e39 0 25%,#31570e 0 50%);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
     color: black;
     padding: 50px;
     .card {
@@ -74,41 +166,44 @@
         overflow: hidden;
         float: left;
         margin: 15px;
-        padding-left:0px !important;
+        padding-left: 0px !important;
         padding-right: 0px !important;
         &__content {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: #000;
+            background: #819b64;
             top: calc(100% - 80px);
             left: 0;
             opacity: 1;
             transition: all 0.75s ease-in-out;
-    
+
             display: flex;
             align-items: top;
             justify-content: center;
-    
+
             &-inner {
                 position: relative;
                 display: block;
                 height: 80px;
-    
+
                 display: flex;
                 flex-flow: column nowrap;
                 text-align: center;
                 justify-content: center;
-    
+
                 transition: all 0.75s ease-in-out;
             }
             &:after {
                 position: absolute;
                 top: 10px;
-                
+                left: 10px;
                 width: 30px;
+                right: 10px;
                 height: 30px;
-                
+                border-color: #fff;
+                border-style: solid;
+                border-width: 2px 0 0 2px;
                 content: "";
             }
         }
@@ -124,10 +219,9 @@
         &:after {
             position: absolute;
             bottom: 10px;
-            
-            
+
             height: 30px;
-            
+
             content: "";
         }
         &.a100,
@@ -137,34 +231,11 @@
                 top: 0;
                 background: #000;
                 transition: all 1s ease-in-out;
-                &-inner{
+                &-inner {
                     height: 100%;
                     align-items: center;
                     justify-content: center;
                     transition: all 1s ease-in-out;
-                }
-            }
-        } // demo
-        &.a50{
-            .card__content {
-                top: 50%;
-                &-inner{
-                    height: 50%;}
-            }
-            &:hover {
-                .card__content {
-                    top: 0;
-                    &-inner{
-                        height: 100%;}
-                }
-            }
-        }
-        &.a100{
-            &:hover {
-                .card__content {
-                    top: calc(100% - 80px);
-                    &-inner{
-                        height: 80px;}
                 }
             }
         }
