@@ -121,9 +121,16 @@ class GiftController extends Controller
     {
         $gift = Gift::findOrFail($id);
         $name = $gift->name;
-        $imageService->deleteImages($gift->id, 'gifts');
-        $gift->delete();
+        try{
+            $imageService->deleteImages($gift->id, 'gifts');
+            $gift->delete();
+            $type = 'success';
+            $message = $name . ' supprimé avec succès';
+        } catch (\Exception $e){
+            $type = 'error';
+            $message = 'Impossible de supprimer ' . $name;
+        }
         return redirect('/gifts')
-            ->with('success', $name . ' supprimé avec succès');
+            ->with($type, $message);
     }
 }

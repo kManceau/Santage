@@ -12,10 +12,10 @@
             <p class="h1">Bonjour, {{Auth::user()->name}}</p>
         </div>
 
-            @if($childrenWG->count() !== 0)
-        <div class="row my-2">
-            <p class="h2 mt-2">Il est temps de bosser, ces pauvres enfants n'ont pas de cadeaux !</p>
-        </div>
+        @if($childrenWG->count() !== 0)
+            <div class="row my-2">
+                <p class="h2 mt-2">Il est temps de bosser, ces pauvres enfants n'ont pas de cadeaux !</p>
+            </div>
 
             <div class="row">
                 @foreach ($childrenWG as $child)
@@ -25,12 +25,15 @@
                                 <h5 class="card-title">{{ $child->first_name }} {{ $child->last_name }}</h5>
                             </div>
                             <div class="card-body">
-                                <p class="my-0"><strong>Sexe : </strong>{{ $child->gender == "male" ? 'Garçon' : 'Fille' }}
+                                <p class="my-0"><strong>Sexe
+                                        : </strong>{{ $child->gender == "male" ? 'Garçon' : 'Fille' }}
                                 </p>
-                                <p class="my-0"><strong>Age : </strong>{{ \Carbon\Carbon::parse($child->birthdate)->age }}
+                                <p class="my-0"><strong>Age
+                                        : </strong>{{ \Carbon\Carbon::parse($child->birthdate)->age }}
                                     ans</p>
                                 <p class="my-0 mt-3"><strong>Adresse : </strong>{{ $child->address }}</p>
-                                <p class="my-0"><strong>Code Postal : </strong>{{ $child->postal_code }} {{$child->city}}
+                                <p class="my-0"><strong>Code Postal
+                                        : </strong>{{ $child->postal_code }} {{$child->city}}
                                 </p>
                                 <p class="my-0"><strong>Pays : </strong>{{ $child->country }}</p>
                                 <p class="my-0 mt-3"><strong>Note Scolaire : </strong>{{ $child->scolar_note }}</p>
@@ -51,7 +54,8 @@
                                             @method('DELETE')
                                             <p class="my-0 {{$gift->good ? 'text-success' : 'text-danger'}}">
                                                 - {{$gift->name}}
-                                                <button type="submit" style="background:none;border:none;" title="Delete">
+                                                <button type="submit" style="background:none;border:none;"
+                                                        title="Delete">
                                                     ❌️
                                                 </button>
                                             </p>
@@ -67,7 +71,7 @@
                     </div>
                 @endforeach
             </div>
-            @endif
+        @endif
 
 
         <div class="row my-2">

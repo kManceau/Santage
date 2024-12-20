@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $gifts = Gift::all();
+        $gifts = Gift::limit(6)->get();
         return view('home', compact('gifts'));
 
     }

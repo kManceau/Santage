@@ -11,6 +11,11 @@
                 {{ session()->get('success') }}
             </div>
         @endif
+        @if(session()->get('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
 
         <div class="row mb-3">
             <p class="h1">Voici la liste des cadeaux</p>
@@ -82,7 +87,8 @@
                             <p class="my-0"><strong>Categorie : </strong>{{ $gift->category->name }}</p>
                             <div class="row mt-4 mb-0">
                                 <div class="col-md-auto mb-2 mb-md-0">
-                                    <a href="{{ route('gifts.edit', $gift->id) }}" class="btn btn-primary rounded-pill shadow-sm d-flex align-items-center">
+                                    <a href="{{ route('gifts.edit', $gift->id) }}"
+                                       class="btn btn-primary rounded-pill shadow-sm d-flex align-items-center">
                                         Mettre à jour
                                     </a>
                                 </div>
@@ -90,7 +96,8 @@
                                     <form action="{{ route('gifts.destroy', $gift->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger rounded-pill d-flex align-items-center card-delete-button">
+                                        <button type="submit"
+                                                class="btn btn-danger rounded-pill d-flex align-items-center card-delete-button">
                                             Supprimer
                                         </button>
                                     </form>
