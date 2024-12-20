@@ -23,7 +23,7 @@ class ChildFactory extends Factory
                 'country' => fake()->country(),
                 'birthdate' => fake()->date(),
                 'gender' => fake()->randomElement(['male', 'female']),
-                'address' => fake()->address(),
+                'address' => fake()->streetAddress(),
                 'city' => fake()->city(),
                 'postal_code' => fake()->postcode(),
                 'scolar_note' => fake()->numberBetween(1,20),
