@@ -13,6 +13,18 @@ class GiftSeeder extends Seeder
      */
     public function run(): void
     {
-        Gift::factory(20)->create();
+//        Gift::factory(20)->create();
+        Gift::create([
+            'name' => 'McLaren MCL38',
+            'description' => 'Championne du monde',
+            'good' => true,
+            'category_id' => 1,
+        ]);
+        Gift::create([
+            'name' => 'Playstation 5',
+            'description' => 'Sale gamer.',
+            'good' => true,
+            'category_id' => 2,
+        ]);
     }
 }
