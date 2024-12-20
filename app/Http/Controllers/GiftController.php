@@ -26,8 +26,8 @@ class GiftController extends Controller
                 ->join('categories', 'gifts.category_id', '=', 'categories.id')
                 ->orderBy('categories.name', $sortDirection)
                 ->select('gifts.*')
+                ->orderBy('gifts.name', 'asc')
                 ->paginate(15);
-
         }
         else{
             $gifts = Gift::orderBy($sortColumn, $sortDirection)->paginate(15);
@@ -40,7 +40,7 @@ class GiftController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('name', 'asc')->get();
         return view('gifts.create',compact('categories'));
     }
 
@@ -69,7 +69,8 @@ class GiftController extends Controller
             $imageService->uploadImages($request->file('image'), $gift->id, 'gifts');
         }
 
-        return redirect()->route('gifts.index')->with('success', 'Produit créé avec succès!');
+        return redirect()->route('gifts.index')
+            ->with('success', $gift->name . ' créé avec succès!');
     }
 
     /**
@@ -86,7 +87,7 @@ class GiftController extends Controller
     public function edit(string $id)
     {
         $gift = Gift::findOrFail($id);
-        $categories = Category::all();
+        $categories = Category::orderBy('name', 'asc')->get();
         return view('gifts.edit', compact('gift','categories'));
     }
 
@@ -109,7 +110,8 @@ class GiftController extends Controller
             $imageService->uploadImages($request->file('image'), $gift->id, 'gifts');
         }
 
-        return redirect()->route('gifts.index')->with('success', 'Cadeau a bien été modifié!');
+        return redirect()->route('gifts.index')
+            ->with('success', $gift->name . ' a bien été modifié!');
     }
 
     /**
@@ -118,8 +120,10 @@ class GiftController extends Controller
     public function destroy(string $id, ImageService $imageService)
     {
         $gift = Gift::findOrFail($id);
+        $name = $gift->name;
         $imageService->deleteImages($gift->id, 'gifts');
         $gift->delete();
-        return redirect('/gifts')->with('success', 'Cadeau supprimé avec succès');
+        return redirect('/gifts')
+            ->with('success', $name . ' supprimé avec succès');
     }
 }

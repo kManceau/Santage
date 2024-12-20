@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Mountains of Christmas" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/dismissAlert.js'])
     @yield('scss')
     @vite(['resources/sass/header.scss'])
 </head>
