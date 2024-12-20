@@ -19,8 +19,20 @@ class CategorySeeder extends Seeder
             'description' => 'Vroum vroum',
         ]);
         Category::create([
-            'name' => 'Console',
+            'name' => 'Informatique',
             'description' => 'GLHF',
+        ]);
+        Category::create([
+            'name' => 'Torture',
+            'description' => 'C\'est interdit normalement...',
+        ]);
+        Category::create([
+            'name' => 'Argent',
+            'description' => 'Money, money, money',
+        ]);
+        Category::create([
+            'name' => 'Voyage',
+            'description' => 'Trop bien',
         ]);
     }
 }

@@ -26,5 +26,35 @@ class GiftSeeder extends Seeder
             'good' => true,
             'category_id' => 2,
         ]);
+        Gift::create([
+            'name' => 'Fiat Multipla accidenté',
+            'description' => 'Championne du monde',
+            'good' => false,
+            'category_id' => 1,
+        ]);
+        Gift::create([
+            'name' => 'Une journée de discussion en tête à tête avec Macron',
+            'description' => 'Horrible...',
+            'good' => false,
+            'category_id' => 3,
+        ]);
+        Gift::create([
+            'name' => 'PC Gamer',
+            'description' => 'RTX 4090, blablabla',
+            'good' => true,
+            'category_id' => 2,
+        ]);
+        Gift::create([
+            'name' => '10 bitcoins',
+            'description' => 'Oula ...',
+            'good' => true,
+            'category_id' => 4,
+        ]);
+        Gift::create([
+            'name' => 'Une semaine de vacances en caravane',
+            'description' => 'Ca doit être génial non ?',
+            'good' => false,
+            'category_id' => 5,
+        ]);
     }
 }
