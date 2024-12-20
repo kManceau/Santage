@@ -49,9 +49,8 @@
                                         : </strong>{{ \Carbon\Carbon::parse($child->birthdate)->age }}
                                     ans</p>
                                 <p class="my-0 mt-3"><strong>Adresse : </strong>{{ $child->address }}</p>
-                                <p class="my-0"><strong>Code Postal
-                                        : </strong>{{ $child->postal_code }} {{$child->city}}
-                                </p>
+                                <p class="my-0"><strong>Code Postal : </strong>{{ $child->postal_code }}</p>
+                                <p class="my-0"><strong>Ville : </strong>{{$child->city}}</p>
                                 <p class="my-0"><strong>Pays : </strong>{{ $child->country }}</p>
                                 <p class="my-0 mt-3"><strong>Note Scolaire : </strong>{{ $child->scolar_note }}</p>
                                 <p class="my-0"><strong>Note de Comportement : </strong>{{ $child->behavior_note }}</p>
@@ -127,8 +126,8 @@
                             <p class="my-0"><strong>Age : </strong>{{ \Carbon\Carbon::parse($child->birthdate)->age }}
                                 ans</p>
                             <p class="my-0 mt-3"><strong>Adresse : </strong>{{ $child->address }}</p>
-                            <p class="my-0"><strong>Code Postal : </strong>{{ $child->postal_code }} {{$child->city}}
-                            </p>
+                            <p class="my-0"><strong>Code Postal : </strong>{{ $child->postal_code }}</p>
+                            <p class="my-0"><strong>Ville : </strong>{{$child->city}}</p>
                             <p class="my-0"><strong>Pays : </strong>{{ $child->country }}</p>
                             <p class="my-0 mt-3"><strong>Note Scolaire : </strong>{{ $child->scolar_note }}</p>
                             <p class="my-0"><strong>Note de Comportement : </strong>{{ $child->behavior_note }}</p>
